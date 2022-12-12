@@ -10,10 +10,14 @@ function App() {
   const handleSubmit = (e) => {
     e.preventDefault();
     
+    var bodyFormData = new FormData();
+    bodyFormData.append('playlist', playlist);
+
+
     axios({
       method: "POST",
       url: "https://yt-playlist-length.up.railway.app/",
-      data: { playlist },
+      data: bodyFormData,
       headers: { "Content-Type": "application/json" },
     }).then((res) => setApiData(res.data));
 
